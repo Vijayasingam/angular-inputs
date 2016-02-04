@@ -1,0 +1,14 @@
+.mandatory, .err-msgs{color:red}
+.err-msgs{display:none;}
+.ng-dyn-input .ng-dirty.ng-invalid-parse ~ .ng-parse-error,
+.ng-dyn-input .ng-dirty.ng-invalid-required ~ .ng-required-error,
+.ng-dyn-input .ng-dirty.ng-invalid-minlength ~ .ng-minLength-error,
+.ng-dyn-input .ng-dirty.ng-invalid-maxlength ~ .ng-maxLength-error {
+    display:block;
+}
+.ng-dyn-input label{display: block}
+label {font-weight:normal;}
+label:first-child {font-weight:bold}
+.ng-dyn-input label.disp-inline-block {display:inline-block;}
+.ng-dyn-input label.disp-inline-block input{margin-right:5px;}
+.marg-right-15{margin-right:15px}

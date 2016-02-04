@@ -1,27 +1,28 @@
 {
-  "name": "angular-inputs",
-  "version": "1.0.0",
-  "description": "Angular Input reusable directives",
-  "main": "index.js",
-  "dependencies": {
-    "bower": "^1.7.7"
-  },
-  "devDependencies": {},
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Vijayasingam/angular-inputs.git"
-  },
-  "keywords": [
-    "Angular",
-    "Directives"
-  ],
-  "author": "Vijayasingam Thanasekaran",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/Vijayasingam/angular-inputs/issues"
-  },
-  "homepage": "https://github.com/Vijayasingam/angular-inputs#readme"
+    "name": "angular-inputs",
+    "version": "1.0.0",
+    "description": "Angular Input reusable directives",
+    "main": "index.js",
+    "dependencies": {
+        "bower": "^1.7.7",
+        "jshint": "~2.9.1"
+    },
+    "devDependencies": {},
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Vijayasingam/angular-inputs.git"
+    },
+    "keywords": [
+        "Angular",
+        "Directives"
+    ],
+    "author": "Vijayasingam Thanasekaran",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/Vijayasingam/angular-inputs/issues"
+    },
+    "homepage": "https://github.com/Vijayasingam/angular-inputs#readme"
 }
