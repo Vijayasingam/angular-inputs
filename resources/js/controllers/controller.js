@@ -2,7 +2,7 @@
 *   Test Controller to provide the config data.
 */
 AngularInputsApp.controller('AngularInputCtrl',function($scope){
-    $scope.data = {"name" : "Abc","amount":1000,"color" : {value:'red', label:'Red'}};
+    $scope.data = {"name" : "Abc","amount":1000,"color" : {value:'red', label:'Red'},"radioBtn":'N'};
     $scope.list = [{"name" : "Abc","amount":1000,"color" : {value:'red', label:'Red'}},{"name" : "Def","amount":1500,"color" : {value:'blue', label:'Blue'}}];
     $scope.colors = [
           {value:'black', label:'Black'},
@@ -21,6 +21,20 @@ AngularInputsApp.controller('AngularInputCtrl',function($scope){
     $scope.removeColor = function(){
         $scope.colors.splice(0,1);
     }
+    $scope.disableTextBox = function(){
+        $scope.configData['name'].validations.disabled = true;
+        $scope.configData['name'].validations.readonly = true;
+
+        $scope.configData['amount'].validations.disabled = true;
+        $scope.configData['amount'].validations.readonly = true;
+    }
+    $scope.enableTextBox = function(){
+        $scope.configData['name'].validations.disabled = false;
+        $scope.configData['name'].validations.readonly = false;
+
+        $scope.configData['amount'].validations.readonly = false;
+        $scope.configData['amount'].validations.disabled = false;
+    }
     $scope.configData = {
         "name" : {
             "id" : "name",
@@ -33,6 +47,8 @@ AngularInputsApp.controller('AngularInputCtrl',function($scope){
                 "maxLength" : 10,
                 "minLength" : 2,
                 "required" : true,
+                "readonly" : false,
+                "disabled" : false,
                 "errorMsgs" : {
                     "required" : "This is a required field",
                     "maxLength" : "Max length 10 Chars",

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Angular Inputs</title>
+    <script src="bower_components/jquery/dist/jquery.min.js" type="text/javascript"></script>
+    <script src="bower_components/angular/angular.min.js" type="text/javascript"></script>
+    <script src="bower_components/angular-ui/build/angular-ui.min.js" type="text/javascript"></script>
+    <script src="app.js" type="text/javascript"></script>
+    <script src="resources/js/controllers/controller.js" type="text/javascript"></script>
+    <script src="resources/js/directives/AngularInput.js" type="text/javascript"></script>
+
+    <link href="bower_components/angular-ui/build/angular-ui.css" rel="stylesheet" type="text/css" />
+    <link href="bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet" type="text/css" />
+    <link href="resources/css/styles.css" rel="stylesheet" type="text/css" />
+</head>
+<body data-ng-app = "AngularInputsApp" class="container" data-ng-controller="AngularInputCtrl">
+    <form class="form-inline" novalidate>
+        <div class="row">
+            {{data | json}}
+            <div class="row panel-group">
+                <div class="col-xs-4">
+                    <!--<dyna-text class="ng-dyn-input" data-object = "data" data-meta="name" ></dyna-text>-->
+                    <dynamic-form data-meta="name" ></dynamic-form>
+                </div>
+                <div class="col-xs-4">
+                    <dynamic-form data-meta="amount" ></dynamic-form>
+                </div>
+                <div class="col-xs-4">
+                    <dynamic-form data-meta="color" ></dynamic-form>
+                </div>
+            </div>
+            <div class = "row panel-group">
+                <div class="col-xs-4">
+                    <dynamic-form data-meta="comment" ></dynamic-form>
+                </div>
+                <div class="col-xs-4">
+                    <dynamic-form data-meta="amtLabel" ></dynamic-form>
+                </div>
+                <div class="col-xs-4">
+                    <dynamic-form data-meta="radioBtn" ></dynamic-form>
+                </div>
+            </div>
+            <div class="row panel-group">
+                <div class="col-xs-3">
+                    <button ng-click="addColor()">Add</button>
+                </div>
+                <div class="col-xs-3">
+                    <button ng-click="removeColor()">Remove</button>
+                </div>
+                <div class="col-xs-3">
+                    <button ng-click="enableTextBox()">Enable</button>
+                </div>
+                <div class="col-xs-3">
+                    <button ng-click="disableTextBox()">Disable</button>
+                </div>
+            </div>
+            <hr />
+            <h3> Elements in a List </h3>
+            {{list | json}}
+            <div ng-repeat = "ls in list" class="row panel-group">
+                <div class="col-xs-4">
+                    <!--<dyna-text class="ng-dyn-input" data-object = "data" data-meta="name" ></dyna-text>-->
+                    <dynamic-form data-meta="name" data-model-object = "ls" ></dynamic-form>
+                </div>
+                <div class="col-xs-4">
+                    <dynamic-form data-meta="amount" data-model-object = "ls" ></dynamic-form>
+                </div>
+                <div class="col-xs-4">
+                    <dynamic-form data-meta="color" data-model-object = "ls" ></dynamic-form>
+                </div>
+            </div>
+        </div>
+    </form>
+</body>
+</html>

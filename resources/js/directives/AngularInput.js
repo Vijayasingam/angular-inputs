@@ -24,7 +24,7 @@ AngularInput.directive('dynamicForm',function($compile){
 }).directive('dynaText',function(){
     return{
         template : "<label ng-class='config.labelStyleClass' for='{{config.id}}'>{{config.labelText}}<span class='mandatory' ng-if='config.validations.required'>*</span></label>"+
-                   "<input id='{{config.id}}' ng-model='model[config.id]' ng-required='config.validations.required' "+
+                   "<input id='{{config.id}}' ng-model='model[config.id]' ng-required='config.validations.required' ng-readonly = 'config.validations.readonly' ng-disabled = 'config.validations.disabled' "+
                    "ng-minlength='config.validations.minLength' ng-maxlength='config.validations.maxLength' type='text' ng-class='config.inputStyleClass' >"+
                    "<p class='err-msgs ng-required-error'>{{config.validations.errorMsgs.required}}</p>" +
                    "<p class='err-msgs ng-minLength-error'>{{config.validations.errorMsgs.minLength}}</p>" +
@@ -39,7 +39,7 @@ AngularInput.directive('dynamicForm',function($compile){
 }).directive('dynaTextarea',function(){
       return{
           template : "<label ng-class='config.labelStyleClass' for='{{config.id}}'>{{config.labelText}}<span class='mandatory' ng-if='config.validations.required'>*</span></label>"+
-                     "<textarea id='{{config.id}}' ng-model='model[config.id]' ng-required='config.validations.required' "+
+                     "<textarea id='{{config.id}}' ng-model='model[config.id]' ng-required='config.validations.required' ng-readonly = 'config.validations.readonly' ng-disabled = 'config.validations.disabled'"+
                      "ng-minlength='config.validations.minLength' ng-maxlength='config.validations.maxLength' ng-class='config.inputStyleClass' ></textarea>"+
                      "<p class='err-msgs ng-required-error'>{{config.validations.errorMsgs.required}}</p>" +
                      "<p class='err-msgs ng-minLength-error'>{{config.validations.errorMsgs.minLength}}</p>" +
@@ -54,7 +54,7 @@ AngularInput.directive('dynamicForm',function($compile){
 }).directive('dynaNumber',function(){
     return{
         template : "<label ng-class='config.labelStyleClass' for='{{config.id}}'>{{config.labelText}}<span class='mandatory' ng-if='config.validations.required'>*</span></label>"+
-                 "<input id='{{config.id}}' ng-model='model[config.id]' ng-required='config.validations.required' "+
+                 "<input id='{{config.id}}' ng-model='model[config.id]' ng-required='config.validations.required' ng-readonly = 'config.validations.readonly' ng-disabled = 'config.validations.disabled'"+
                  "ng-minlength='config.validations.minLength' ng-maxlength='config.validations.maxLength' type='number' ng-class='config.inputStyleClass' >"+
                  "<p class='err-msgs ng-required-error'>{{config.validations.errorMsgs.required}}</p>" +
                  "<p class='err-msgs ng-minLength-error'>{{config.validations.errorMsgs.minLength}}</p>" +
@@ -68,7 +68,7 @@ AngularInput.directive('dynamicForm',function($compile){
 }).directive('dynaSelect',function(){
     return{
         template : "<label ng-class='config.labelStyleClass' for='{{config.id}}'>{{config.labelText}}<span class='mandatory' ng-if='config.validations.required'>*</span></label>"+
-                   "<select id='{{config.id}}' ng-options = 'el as el.label for el in list track by el.value' ng-model='model[config.id]' ng-required='config.validations.required' "+
+                   "<select id='{{config.id}}' ng-options = 'el as el.label for el in list track by el.value' ng-model='model[config.id]' ng-readonly = 'config.validations.readonly' ng-disabled = 'config.validations.disabled' ng-required='config.validations.required' "+
                    "ng-class='config.inputStyleClass' />"+
                    "<p class='err-msgs ng-required-error'>{{config.validations.errorMsgs.required}}</p>",
         restrict : 'EA',
@@ -91,8 +91,9 @@ AngularInput.directive('dynamicForm',function($compile){
 }).directive('dynaRadio',function(){
     return{
         template : "<label ng-class='config.labelStyleClass' for='{{config.id}}'>{{config.labelText}}<span class='mandatory' ng-if='config.validations.required'>*</span></label>"+
-                 "<label class='disp-inline-block marg-right-15' ng-repeat = 'el in list track by el.value' id='{{config.id}}-{{el.value}}'><input for='{{config.id}}-{{el.value}}' ng-model='model[config.id]' ng-required='config.validations.required' "+
-                 "type='radio' ng-class='config.inputStyleClass' />{{el.label}}</label>"+
+                 "<label for='{{config.id}}-{{el.value}}' class='disp-inline-block marg-right-15' ng-repeat = 'el in list track by el.value'>"+
+                 "<input type='radio' ng-model='$parent.model[config.id]' ng-readonly = 'config.validations.readonly' ng-disabled = 'config.validations.disabled' name='config.id' ng-value='el.value' ng-required='config.validations.required' id='{{config.id}}-{{el.value}}' />"+
+                 "{{el.label}}</label>"+
                  "<p class='err-msgs ng-required-error'>{{config.validations.errorMsgs.required}}</p>" +
                  "<p class='err-msgs ng-minLength-error'>{{config.validations.errorMsgs.minLength}}</p>" +
                  "<p class='err-msgs ng-maxLength-error'>{{config.validations.errorMsgs.maxLength}}</p>" +
