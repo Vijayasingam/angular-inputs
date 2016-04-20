@@ -5,6 +5,7 @@ AngularInput.directive('dynamicForm',function($compile){
     var templates = {};
     templates.textTemplate = '<dyna-text class="ng-dyn-input" data-model-object = "{{modelObject}}" data-object = "data" data-meta="{{config.id}}" data-config="configData"></dyna-text>';
     templates.radioTemplate = '<dyna-radio class="ng-dyn-input" data-model-object = "{{modelObject}}" data-object = "data" data-meta="{{config.id}}" data-config="configData"></dyna-radio>';
+    templates.checkboxTemplate = '<dyna-check class="ng-dyn-input" data-model-object = "{{modelObject}}" data-object = "data" data-meta="{{config.id}}" data-config="configData"></dyna-check>';
     templates.numberTemplate = '<dyna-number class="ng-dyn-input" data-model-object = "{{modelObject}}" data-object = "data" data-meta="{{config.id}}" data-config="configData"></dyna-number>';
     templates.selectTemplate = '<dyna-select class="ng-dyn-input" data-model-object = "{{modelObject}}" data-object = "data" data-meta="{{config.id}}" data-config="configData"></dyna-select>';
     templates.textareaTemplate = '<dyna-textarea class="ng-dyn-input" data-model-object = "{{modelObject}}" data-object = "data" data-meta="{{config.id}}" data-config="configData"></dyna-textarea>';
@@ -105,4 +106,19 @@ AngularInput.directive('dynamicForm',function($compile){
             scope.model = (attr.modelObject) ? scope[attr.modelObject] : scope[attr.object];
         }
     }
-})
+}).directive('dynaCheck',function(){
+      return{
+          template : "<label ng-class='config.labelStyleClass' for='{{config.id}}'>{{config.labelText}}<span class='mandatory' ng-if='config.validations.required'>*</span></label>"+
+                     "<input id='{{config.id}}' ng-model='model[config.id]' ng-required='config.validations.required' ng-readonly = 'config.validations.readonly' ng-disabled = 'config.validations.disabled' "+
+                     "type='checkbox' ng-class='config.inputStyleClass' >"+
+                     "<p class='err-msgs ng-required-error'>{{config.validations.errorMsgs.required}}</p>" +
+                     "<p class='err-msgs ng-minLength-error'>{{config.validations.errorMsgs.minLength}}</p>" +
+                     "<p class='err-msgs ng-maxLength-error'>{{config.validations.errorMsgs.maxLength}}</p>" +
+                     "<p class='err-msgs ng-parse-error'>{{config.validations.errorMsgs.pattern}}</p>",
+          restrict : 'EA',
+          link: function(scope, element, attr) {
+              scope.config = scope[attr.config][attr.meta];
+              scope.model = (attr.modelObject) ? scope[attr.modelObject] : scope[attr.object];
+          }
+      }
+});
